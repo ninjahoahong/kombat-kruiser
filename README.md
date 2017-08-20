@@ -1,2 +1,2 @@
 # kombat-kruiser
-A battle ship game
+A battle ship theGame
