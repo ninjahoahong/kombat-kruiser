@@ -6,29 +6,18 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.ninjahoahong.kombatkruiser.KombatKruiser;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 
 public class SplashScreen implements Screen {
-    private KombatKruiser theGame;
+    private SpriteBatch batch;
     private Sprite splash;
     private OrthographicCamera camera;
 
-    public SplashScreen(KombatKruiser theGame){
-        this.theGame = theGame;
+    public SplashScreen(){
+        batch = new SpriteBatch();
         camera = new OrthographicCamera();
         camera.setToOrtho(true);
-    }
-
-    private void handleInput(float delta){
-        if (Gdx.input.isTouched()){
-            theGame.setScreen(new MainMenuScreen(theGame));
-        }
-    }
-
-    public void update(float delta){
-        splash.setCenter(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
-        handleInput(delta);
     }
 
     @Override
@@ -40,14 +29,13 @@ public class SplashScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        update(delta);
-
+        splash.setCenter(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
         Gdx.gl.glClearColor(1, 1, 1, 1); // Color then opacity
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        theGame.batch.begin();
-        splash.draw(theGame.batch);
-        theGame.batch.end();
+        batch.begin();
+        splash.draw(batch);
+        batch.end();
     }
 
     @Override
@@ -71,7 +59,7 @@ public class SplashScreen implements Screen {
 
     @Override
     public void dispose() {
-        theGame.batch.dispose();
+        batch.dispose();
         splash.getTexture().dispose();
     }
 }

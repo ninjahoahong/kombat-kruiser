@@ -19,8 +19,8 @@ public class MainMenuScreen extends AbstractScreen {
     private Table table;
     private Button playButton;
 
-    private float screenWidth = Gdx.graphics.getWidth();
-    private float screenHeight = Gdx.graphics.getHeight();
+    private static final float SCREEN_WIDTH = Gdx.graphics.getWidth();
+    private static final float SCREEN_HEIGHT = Gdx.graphics.getHeight();
 
     private OrthographicCamera camera;
 
@@ -54,9 +54,9 @@ public class MainMenuScreen extends AbstractScreen {
 
         table = new Table();
 
-        table.setHeight(screenHeight/4);
-        table.setWidth(screenWidth/1.5f);
-        table.setPosition(screenWidth/2 - table.getWidth()/2, screenHeight/3.5f);
+        table.setHeight(SCREEN_HEIGHT /4);
+        table.setWidth(SCREEN_WIDTH/1.5f);
+        table.setPosition(SCREEN_WIDTH/2 - table.getWidth()/2, SCREEN_HEIGHT /3.5f);
         table.setOrigin(table.getWidth()/2, table.getHeight()/2);
         table.setTransform(true);
         table.rotateBy(-6);
