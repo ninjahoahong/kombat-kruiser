@@ -2,13 +2,11 @@ package com.ninjahoahong.kombatkruiser;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Timer;
 import com.ninjahoahong.kombatkruiser.screens.MainMenuScreen;
 import com.ninjahoahong.kombatkruiser.screens.SplashScreen;
 
 public class KombatKruiser extends Game {
-    public SpriteBatch batch;
     private static long MINIMUM_DURATION_MILLIS = 2000L;
 
     public KombatKruiser() {
@@ -17,7 +15,6 @@ public class KombatKruiser extends Game {
 
     @Override
     public void create() {
-        batch = new SpriteBatch();
         setScreen(new SplashScreen());
         final long startTime = System.currentTimeMillis();
         Gdx.app.postRunnable(new Runnable() {
@@ -50,6 +47,6 @@ public class KombatKruiser extends Game {
 
     @Override
     public void dispose() {
-        batch.dispose();
+        super.dispose();
     }
 }
