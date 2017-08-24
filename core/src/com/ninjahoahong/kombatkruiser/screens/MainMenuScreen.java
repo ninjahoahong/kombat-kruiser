@@ -56,6 +56,7 @@ public class MainMenuScreen extends BaseScreen {
     public void show() {
         super.show();
         Gdx.input.setInputProcessor(stage);
+        Gdx.input.setCatchBackKey(true);
 
         backgroundTexture = new Texture(Gdx.files.internal("bg-white.png"));
         backgroundImage = new Image(backgroundTexture);
@@ -116,6 +117,27 @@ public class MainMenuScreen extends BaseScreen {
                 "Credits",
                 500);
         stage.addActor(creditsButton);
+
+        exitButton = addTextButtonToHorizontalCenter(
+                textButtonStyle,
+                "Exit",
+                550);
+        exitButton.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(
+                    InputEvent event, float x, float y, int pointer,
+                    int button) {
+                return true;
+            }
+
+            @Override
+            public void touchUp(
+                    InputEvent event, float x, float y, int pointer,
+                    int button) {
+                Gdx.app.exit();
+            }
+        });
+        stage.addActor(exitButton);
     }
 
     private TextButton addTextButtonToHorizontalCenter(
@@ -136,7 +158,7 @@ public class MainMenuScreen extends BaseScreen {
         TextureRegion currentFrame =
                 wheelAnimation.getKeyFrame(stateTime, true);
         batch.begin();
-        batch.draw(currentFrame, GAME_WIDTH / 2 - 20, 600);
+        batch.draw(currentFrame, GAME_WIDTH / 2 - 20, 650);
         batch.end();
     }
 
